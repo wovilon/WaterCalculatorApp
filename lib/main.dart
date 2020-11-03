@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [
         const Locale('en', ''),
-        const Locale('es', ''),
+        const Locale('ru', ''),
       ],
       home: DemoApp()
     );

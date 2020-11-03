@@ -7,7 +7,7 @@ class DemoLocalizationsDelegate extends LocalizationsDelegate<Lang> {
   const DemoLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) => ['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['en', 'ru'].contains(locale.languageCode);
 
   @override
   Future<Lang> load(Locale locale) {

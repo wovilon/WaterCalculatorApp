@@ -14,8 +14,8 @@ class Lang {
     'en': {
       'title': 'Hello World',
     },
-    'es': {
-      'title': 'Hola Mundo',
+    'ru': {
+      'title': 'Привет мир!',
     },
   };
 
