@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:water_calculator_app/screens/FoodScreen.dart';
@@ -6,7 +7,7 @@ import 'package:water_calculator_app/screens/WaterScreen.dart';
 import 'package:water_calculator_app/util/LocalizationUtil.dart';
 import 'util/DemoLocalizationDelegate.dart';
 import 'util/Routes.dart';
-
+import 'package:device_preview/device_preview.dart';
 
 
 
@@ -33,7 +34,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: Locale('en', ''),
+        locale: DevicePreview.of(context).locale, //device preview lib
+        builder: DevicePreview.appBuilder,  //device preview lib
+      //locale: Locale('en', ''),
       onGenerateTitle: (BuildContext context) => Lang.of(context).title,
       localizationsDelegates: [
         const DemoLocalizationsDelegate(),
@@ -55,6 +58,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(DevicePreview(child: MyApp()));
-}
+void main() => runApp(
+  DevicePreview(
+    enabled: false,   //!kReleaseMode,
+    builder: (context) => MyApp(),
+  ),
+);

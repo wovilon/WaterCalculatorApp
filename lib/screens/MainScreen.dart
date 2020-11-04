@@ -54,7 +54,14 @@ class MenuButtonState extends State<MenuButton>{
 class BackGround extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(color: ResColor.BackGround,);
+    return Container(
+      decoration: BoxDecoration(gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [ResColor.BDGrad1, ResColor.BDGrad2],
+        stops: [0.8, 1]
+      )),
+    );
   }
 }
 
