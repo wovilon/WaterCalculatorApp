@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
 
 void main() => runApp(
   DevicePreview(
-    enabled: false,   //!kReleaseMode,
+    enabled: true,   //!kReleaseMode,
     builder: (context) => MyApp(),
   ),
 );
