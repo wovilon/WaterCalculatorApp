@@ -3,8 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:water_calculator_app/res/ResColor.dart';
 import 'package:water_calculator_app/res/Styles.dart';
+import 'package:water_calculator_app/screens/FoodScreen.dart';
+import 'package:water_calculator_app/screens/WaterScreen.dart';
 import 'package:water_calculator_app/util/LocalizationUtil.dart';
+import 'package:water_calculator_app/util/Routes.dart';
 import 'package:water_calculator_app/widgets/Background.dart';
+import 'package:water_calculator_app/widgets/MyCard.dart';
 
 class MainScreen extends StatelessWidget{
   @override
@@ -28,24 +32,30 @@ class Menu extends StatelessWidget {
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                MenuButton(Lang.of(context).waterCalculator),
-                MenuButton(Lang.of(context).foodCalculator),
-                MenuButton(Lang.of(context).yourBalance)
+                MenuButton(Lang.of(context).waterCalculator, Routes.waterScreen),
+                MenuButton(Lang.of(context).foodCalculator, Routes.foodScreen),
+                MenuButton(Lang.of(context).yourBalance, Routes.balanceScreen)
               ],)),
       );
     else return Center(
         child: Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MenuButton(Lang.of(context).waterCalculator),
-            MenuButton(Lang.of(context).foodCalculator),
-            MenuButton(Lang.of(context).yourBalance)
+            MenuButton(Lang.of(context).waterCalculator, Routes.waterScreen,
+              width: 200.0, height: 210,),
+            MenuButton(Lang.of(context).foodCalculator, Routes.foodScreen,
+              width: 200.0, height: 210,),
+            MenuButton(Lang.of(context).yourBalance, Routes.balanceScreen,
+              width: 200.0, height: 210,)
           ],));
   }
 }
 
 class MenuButton extends StatefulWidget{
   final String text;
-  MenuButton(this.text);
+  double width = 0;
+  double height = 0;
+  final String route;
+  MenuButton(this.text, this.route, {this.width, this.height});
 
   @override
   State<StatefulWidget> createState() {
@@ -59,14 +69,22 @@ class MenuButtonState extends State<MenuButton>{
   Widget build(BuildContext context) {
     final bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     print('width ' + MediaQuery.of(context).size.width.toString());
-    return Container(margin: EdgeInsets.all(6),
-      child: Card(elevation: 50.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Container(padding: EdgeInsets.all(32),
-            child: Text(widget.text,
-              style: Styles.TextMain,
-              textAlign: TextAlign.center,)
-      ),),
+    return GestureDetector(
+      onTap: (){Navigator.pushNamed(context, widget.route);},
+      child: Container(
+        margin: EdgeInsets.all(6),
+        width: (widget.width != 0) ? widget.width : double.infinity,
+        height: widget.height,
+        child: MyCard(
+            Center(
+              child: Container(padding: EdgeInsets.all(32),
+                  child: Text(widget.text,
+                    style: Styles.TextMain,
+                    textAlign: TextAlign.center,)
+              ),
+            )
+        )
+      ),
     );
   }
 }

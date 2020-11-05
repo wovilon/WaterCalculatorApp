@@ -1,6 +1,8 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:water_calculator_app/screens/BalanceScreen.dart';
 import 'package:water_calculator_app/screens/FoodScreen.dart';
 import 'package:water_calculator_app/screens/MainScreen.dart';
 import 'package:water_calculator_app/screens/WaterScreen.dart';
@@ -51,7 +53,8 @@ class MyApp extends StatelessWidget {
       routes: {
         Routes.mainScreen:(BuildContext context) => MainScreen(),
         Routes.waterScreen:(BuildContext context) => WaterScreen(),
-        Routes.foodScreen:(BuildContext context) => FoodScreen()
+        Routes.foodScreen:(BuildContext context) => FoodScreen(),
+        Routes.balanceScreen:(BuildContext context) => BalanceScreen()
       },
       home: MainScreen()
     );
@@ -60,7 +63,7 @@ class MyApp extends StatelessWidget {
 
 void main() => runApp(
   DevicePreview(
-    enabled: true,   //!kReleaseMode,
+    enabled: false,   //!kReleaseMode,
     builder: (context) => MyApp(),
   ),
 );
