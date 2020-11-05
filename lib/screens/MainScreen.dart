@@ -1,10 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:water_calculator_app/res/ResColor.dart';
 import 'package:water_calculator_app/res/Styles.dart';
-import 'package:water_calculator_app/screens/FoodScreen.dart';
-import 'package:water_calculator_app/screens/WaterScreen.dart';
 import 'package:water_calculator_app/util/LocalizationUtil.dart';
 import 'package:water_calculator_app/util/Routes.dart';
 import 'package:water_calculator_app/widgets/Background.dart';
@@ -67,8 +64,6 @@ class MenuButtonState extends State<MenuButton>{
 
   @override
   Widget build(BuildContext context) {
-    final bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-    print('width ' + MediaQuery.of(context).size.width.toString());
     return GestureDetector(
       onTap: (){Navigator.pushNamed(context, widget.route);},
       child: Container(

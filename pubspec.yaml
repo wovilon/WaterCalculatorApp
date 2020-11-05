@@ -26,6 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   device_preview: ^0.4.8
+  syncfusion_flutter_sliders: ^18.3.47-beta
 
 
   # The following adds the Cupertino Icons font to your application.
