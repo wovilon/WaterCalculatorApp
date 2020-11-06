@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
 
 void main() => runApp(
   DevicePreview(
-    enabled: false,   //!kReleaseMode,
+    enabled: !kReleaseMode,   //!kReleaseMode,
     builder: (context) =>
         ChangeNotifierProvider(
             create: (context) => DataManager(),

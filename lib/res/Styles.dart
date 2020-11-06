@@ -7,6 +7,20 @@ class Styles{
   static const TextMain = TextStyle(
     fontSize: 18,
     fontFamily: 'Pribambas',
+    letterSpacing: 1.0,
+    color: Colors.black87,
+    shadows: [
+      Shadow(
+        blurRadius: 10.0,
+        color: Colors.grey,
+        offset: Offset(5.0, 5.0),
+      ),
+    ],
+  );
+
+  static const TextMainNum = TextStyle(
+    fontSize: 28,
+    fontFamily: 'Pribambas',
     letterSpacing: 2.0,
     color: Colors.black87,
     shadows: [

@@ -18,7 +18,7 @@ class Lang {
       'yourBalance' : 'YOUR WATER BALANCE',
 
       'dailyWater' : 'DAILY WATER NECESSITY:',
-      'l': 'l',
+      'l': 'L',
       'gender' : 'Gender',
       'male': 'Male',
       'female': 'Female',
@@ -42,7 +42,7 @@ class Lang {
       'foodCalculator' : 'КАЛЬКУЛЯТОР ВОДЫ В ПИЩЕ',
       'yourBalance' : 'ВАШ ВОДНЫЙ БАЛАНС',
 
-      'dailyWater' : 'ДНЕВНАЯ ПОТРЕБНОСТЬ В ВОДЕ:',
+      'dailyWater' : 'Дневная потребость:',
       'l': 'л',
       'gender' : 'Пол',
       'male': 'Мужской',

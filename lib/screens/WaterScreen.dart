@@ -63,7 +63,7 @@ class __WaterListState extends State<_WaterList> {
                 child: Column(children: [
                   Text(Lang.of(context).dailyWater + ' '
                       + '${data.waterNeeded.toStringAsFixed(1)}'
-                      + ' ' + Lang.of(context).l,
+                      + '' + Lang.of(context).l,
                     style: Styles.TextMain, textAlign: TextAlign.center,),
                   Expanded(
                     child: Container(
