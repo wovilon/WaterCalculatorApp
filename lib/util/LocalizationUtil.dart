@@ -24,7 +24,8 @@ class Lang {
       'kg': 'kg',
       'physical_activity': 'Physical activity',
       'h': 'h',
-      'coffe': 'Do you drink coffee?',
+      'coffee': 'Coffee drinking:',
+      'cups': 'cups',
       'yes': 'Yes',
       'no': 'No',
       'sun': 'Sunny climate?',
@@ -46,7 +47,8 @@ class Lang {
       'kg': 'кг',
       'physical_activity': 'Физическая активность',
       'h': 'ч',
-      'coffee': 'Вы пьете кофе?',
+      'coffee': 'Пьете ли вы кофе:',
+      'cups': 'чашек',
       'yes': 'Да',
       'no': 'Нет',
       'sun': 'Солнечный климат?',
@@ -82,6 +84,8 @@ class Lang {
     return _localizedValues[locale.languageCode]['h'];}
   String get coffee {
     return _localizedValues[locale.languageCode]['coffee'];}
+  String get cups {
+    return _localizedValues[locale.languageCode]['cups'];}
   String get yes {
     return _localizedValues[locale.languageCode]['yes'];}
   String get no {

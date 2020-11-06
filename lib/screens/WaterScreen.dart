@@ -29,7 +29,9 @@ class __WaterListState extends State<_WaterList> {
 
   double calculateWidth(){
     if (MediaQuery.of(context).size.width > 600)
-      return MediaQuery.of(context).size.width/2;
+      if (MediaQuery.of(context).orientation == Orientation.landscape)
+               return MediaQuery.of(context).size.width/2;
+              else return MediaQuery.of(context).size.width*0.8;
     else return 400;
   }
 
@@ -45,7 +47,8 @@ class __WaterListState extends State<_WaterList> {
                   style: Styles.TextMain, textAlign: TextAlign.center,),
                 Expanded(
                   child: Container(
-                    child: ListView(children: [
+                    child: ListView(padding: EdgeInsets.only(top: 8),
+                      children: [
                       _Item(Lang.of(context).gender,
                         yesText: Lang.of(context).male,
                         noText: Lang.of(context).female,),
@@ -57,6 +60,26 @@ class __WaterListState extends State<_WaterList> {
                       _Item(Lang.of(context).physical_activity, sliderValue: 0,
                         sliderUnits: Lang.of(context).h,
                         sliderMax: 6, sliderMin: 0, sliderInterval: 1,),
+                        SizedBox(height: 20,),
+                        _Item(Lang.of(context).coffee, sliderValue: 0,
+                          sliderUnits: Lang.of(context).cups,
+                          sliderMax: 5, sliderMin: 0, sliderInterval: 1,),
+                        SizedBox(height: 20,),
+                        _Item(Lang.of(context).sun,
+                          yesText: Lang.of(context).yes,
+                          noText: Lang.of(context).no),
+                        _Item(Lang.of(context).protein_diet,
+                            yesText: Lang.of(context).yes,
+                            noText: Lang.of(context).no),
+                        _Item(Lang.of(context).pregnancy,
+                            yesText: Lang.of(context).yes,
+                            noText: Lang.of(context).no),
+                        _Item(Lang.of(context).breast_feeding,
+                            yesText: Lang.of(context).yes,
+                            noText: Lang.of(context).no),
+                        _Item(Lang.of(context).ill,
+                            yesText: Lang.of(context).yes,
+                            noText: Lang.of(context).no),
                     ],),
                   ),
                 )
