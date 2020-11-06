@@ -17,6 +17,8 @@ class Lang {
       'foodCalculator' : 'FOOD CALCULATOR',
       'yourBalance' : 'YOUR WATER BALANCE',
 
+      'dailyWater' : 'DAILY WATER NECESSITY:',
+      'l': 'l',
       'gender' : 'Gender',
       'male': 'Male',
       'female': 'Female',
@@ -40,6 +42,8 @@ class Lang {
       'foodCalculator' : 'КАЛЬКУЛЯТОР ВОДЫ В ПИЩЕ',
       'yourBalance' : 'ВАШ ВОДНЫЙ БАЛАНС',
 
+      'dailyWater' : 'ДНЕВНАЯ ПОТРЕБНОСТЬ В ВОДЕ:',
+      'l': 'л',
       'gender' : 'Пол',
       'male': 'Мужской',
       'female': 'Женский',
@@ -68,6 +72,10 @@ class Lang {
   String get yourBalance {
     return _localizedValues[locale.languageCode]['yourBalance'];}
 
+  String get dailyWater {
+    return _localizedValues[locale.languageCode]['dailyWater'];}
+  String get l {
+    return _localizedValues[locale.languageCode]['l'];}
   String get gender {
     return _localizedValues[locale.languageCode]['gender'];}
   String get male {

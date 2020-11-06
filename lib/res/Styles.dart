@@ -5,7 +5,7 @@ import 'package:water_calculator_app/res/ResColor.dart';
 
 class Styles{
   static const TextMain = TextStyle(
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Pribambas',
     letterSpacing: 2.0,
     color: Colors.black87,

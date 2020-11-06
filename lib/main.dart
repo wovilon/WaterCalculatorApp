@@ -2,6 +2,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:water_calculator_app/model/DataManager.dart';
 import 'package:water_calculator_app/screens/BalanceScreen.dart';
 import 'package:water_calculator_app/screens/FoodScreen.dart';
 import 'package:water_calculator_app/screens/MainScreen.dart';
@@ -64,6 +66,10 @@ class MyApp extends StatelessWidget {
 void main() => runApp(
   DevicePreview(
     enabled: false,   //!kReleaseMode,
-    builder: (context) => MyApp(),
+    builder: (context) =>
+        ChangeNotifierProvider(
+            create: (context) => DataManager(),
+            child: MyApp(),
+        )
   ),
 );
