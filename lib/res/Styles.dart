@@ -21,7 +21,7 @@ class Styles{
   static const TextSecondary = TextStyle(
     fontSize: 14,
     fontFamily: 'Pribambas',
-    letterSpacing: 2.0,
+    letterSpacing: 1.0,
     color: Colors.black87,
     shadows: [
       Shadow(

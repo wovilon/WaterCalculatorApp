@@ -34,6 +34,13 @@ class __WaterListState extends State<_WaterList> {
               else return MediaQuery.of(context).size.width*0.8;
     else return 400;
   }
+  bool state = false;
+  void _handleChanges(bool newValue){
+    setState(() {
+      print('changes handled');
+      state = newValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,35 +56,41 @@ class __WaterListState extends State<_WaterList> {
                   child: Container(
                     child: ListView(padding: EdgeInsets.only(top: 8),
                       children: [
-                      _Item(Lang.of(context).gender,
+                      _Item(Lang.of(context).gender, _handleChanges,
+                        isSwitched: state,
                         yesText: Lang.of(context).male,
                         noText: Lang.of(context).female,),
-                      _Item(Lang.of(context).weight, sliderValue: 20,
-                          sliderUnits: Lang.of(context).kg,
+                      _Item(Lang.of(context).weight, _handleChanges, sliderValue: 20,
+                        sliderUnits: Lang.of(context).kg,
                           sliderMax: 140, sliderMin: 20, sliderInterval: 20,
                           subIntervalEnabled: true,),
                       SizedBox(height: 20,),
-                      _Item(Lang.of(context).physical_activity, sliderValue: 0,
+                      _Item(Lang.of(context).physical_activity, _handleChanges, sliderValue: 0,
                         sliderUnits: Lang.of(context).h,
                         sliderMax: 6, sliderMin: 0, sliderInterval: 1,),
                         SizedBox(height: 20,),
-                        _Item(Lang.of(context).coffee, sliderValue: 0,
+                        _Item(Lang.of(context).coffee, _handleChanges, sliderValue: 0,
                           sliderUnits: Lang.of(context).cups,
                           sliderMax: 5, sliderMin: 0, sliderInterval: 1,),
                         SizedBox(height: 20,),
-                        _Item(Lang.of(context).sun,
-                          yesText: Lang.of(context).yes,
+                        _Item(Lang.of(context).sun, _handleChanges,
+                            isSwitched: state,
+                            yesText: Lang.of(context).yes,
                           noText: Lang.of(context).no),
-                        _Item(Lang.of(context).protein_diet,
+                        _Item(Lang.of(context).protein_diet, _handleChanges,
+                            isSwitched: state,
                             yesText: Lang.of(context).yes,
                             noText: Lang.of(context).no),
-                        _Item(Lang.of(context).pregnancy,
+                        _Item(Lang.of(context).pregnancy, _handleChanges,
+                            isSwitched: state,
                             yesText: Lang.of(context).yes,
                             noText: Lang.of(context).no),
-                        _Item(Lang.of(context).breast_feeding,
+                        _Item(Lang.of(context).breast_feeding, _handleChanges,
+                            isSwitched: state,
                             yesText: Lang.of(context).yes,
                             noText: Lang.of(context).no),
-                        _Item(Lang.of(context).ill,
+                        _Item(Lang.of(context).ill, _handleChanges,
+                            isSwitched: state,
                             yesText: Lang.of(context).yes,
                             noText: Lang.of(context).no),
                     ],),
@@ -97,7 +110,7 @@ class _Item extends StatefulWidget {
   final String caption;
   final String yesText;
   final String noText;
-  bool _isSwitched = false;
+  bool isSwitched;
 
   final String sliderUnits;
   double sliderValue;
@@ -106,11 +119,18 @@ class _Item extends StatefulWidget {
   final double sliderInterval;
   final bool subIntervalEnabled;
 
-  _Item(this.caption, {
+  final ValueChanged<bool> onChanged;
+
+  _Item(this.caption, this.onChanged, {
+    this.isSwitched = false,
     this.yesText = '', this.noText = '',
     this.sliderUnits = '', this.sliderValue = -1, this.sliderMax = -1, this.sliderMin = -1,
-    this.sliderInterval = 0, this.subIntervalEnabled = false
-  });
+    this.sliderInterval = 0, this.subIntervalEnabled = false,
+    Key key}): super(key: key);
+
+  void handleChanges(){
+    onChanged(isSwitched);
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -136,13 +156,15 @@ class _ItemState extends State<_Item> {
           child: Row(
             children: [
               Text(widget.yesText, style:
-                widget._isSwitched? Styles.TextTetriaryGrey : Styles.TextTetriaryBlack,),
-              Switch(value: widget._isSwitched, onChanged: (value) {setState(() {
-                widget._isSwitched = value;
+                widget.isSwitched? Styles.TextTetriaryGrey : Styles.TextTetriaryBlack,),
+              Switch(value: widget.isSwitched, onChanged: (value) {setState(() {
+                widget.isSwitched = value;
+                widget.handleChanges();
+                print('inner state: $value');
               });
               },),
               Text(widget.noText, style:
-                widget._isSwitched? Styles.TextTetriaryBlack : Styles.TextTetriaryGrey,)
+                widget.isSwitched? Styles.TextTetriaryBlack : Styles.TextTetriaryGrey,)
             ],
           ),
         )
