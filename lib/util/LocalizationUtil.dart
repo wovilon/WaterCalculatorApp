@@ -34,7 +34,10 @@ class Lang {
       'protein_diet': 'Protein diet',
       'pregnancy': 'Pregnancy?',
       'breast_feeding': 'Breast-feeding?',
-      'ill': 'Are you ill now?'
+      'ill': 'Are you ill now?',
+
+      'waterInFood': 'Your daily food contains:',
+      'litersWater': 'liters of water'
     },
     'ru': {
       'title': 'Привет мир!',
@@ -59,7 +62,9 @@ class Lang {
       'protein_diet': 'Протеиновая диета?',
       'pregnancy': 'Беременность?',
       'breast_feeding': 'Грудное вскармливание?',
-      'ill': 'Вы болеете сейчас?'
+      'ill': 'Вы болеете сейчас?',
+      'waterInFood': 'В вашей пище содержится:',
+      'litersWater': 'литров воды'
     },
   };
 
@@ -108,5 +113,10 @@ class Lang {
     return _localizedValues[locale.languageCode]['breast_feeding'];}
   String get ill {
     return _localizedValues[locale.languageCode]['ill'];}
+
+  String get waterInFood {
+    return _localizedValues[locale.languageCode]['waterInFood'];}
+  String get litersWater {
+    return _localizedValues[locale.languageCode]['litersWater'];}
 }
 
