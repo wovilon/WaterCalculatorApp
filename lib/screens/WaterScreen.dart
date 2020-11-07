@@ -61,9 +61,9 @@ class __WaterListState extends State<_WaterList> {
             child: MyCard(
               Padding(padding: const EdgeInsets.only(top: 24, left: 16, right: 16, bottom: 8),
                 child: Column(children: [
-                  Text(Lang.of(context).dailyWater + ' '
-                      + '${data.waterNeeded.toStringAsFixed(1)}'
-                      + '' + Lang.of(context).l,
+                  Text('${Lang.of(context).dailyWater}'
+                      ' ${data.waterNeeded.toStringAsFixed(1)}'
+                      ' ${Lang.of(context).l}',
                     style: Styles.TextMain, textAlign: TextAlign.center,),
                   Expanded(
                     child: Container(
