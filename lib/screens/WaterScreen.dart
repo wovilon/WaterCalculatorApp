@@ -65,6 +65,7 @@ class __WaterListState extends State<_WaterList> {
                       ' ${data.waterNeeded.toStringAsFixed(1)}'
                       ' ${Lang.of(context).l}',
                     style: Styles.TextMain, textAlign: TextAlign.center,),
+                  SizedBox(height: 8,),
                   Expanded(
                     child: Container(
                       child: ListView(padding: EdgeInsets.only(top: 8),

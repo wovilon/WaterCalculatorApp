@@ -17,7 +17,7 @@ class Lang {
       'foodCalculator' : 'FOOD CALCULATOR',
       'yourBalance' : 'YOUR WATER BALANCE',
 
-      'dailyWater' : 'DAILY WATER NECESSITY:',
+      'dailyWater' : 'Daily water necessity:',
       'l': 'L',
       'gender' : 'Gender',
       'male': 'Male',
