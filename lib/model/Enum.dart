@@ -1,11 +1,11 @@
 
 class Meals{
-  static const int breakfast = 1;
-  static const int lunch = 2;
-  static const int dinner = 3;
-  static const int snack1 = 4;
-  static const int snack2 = 5;
-  static const int snack3 = 6;
+  static const int breakfast = 0;
+  static const int lunch = 1;
+  static const int dinner = 2;
+  static const int snack1 = 3;
+  static const int snack2 = 4;
+  static const int snack3 = 5;
 }
 
 class Dishes{
@@ -22,11 +22,11 @@ class Dishes{
   static const int sandwich = 109;
 }
 
-class MealImages{
-  static const String breakfast = 'assets/Breakfast.jpg';
-  static const String lunch = 'assets/Lunch.jpg';
-  static const String dinner = 'assets/Dinner.jpg';
-  static const String snack1 = 'assets/Snack1.jpg';
-  static const String snack2 = 'assets/Snack2.jpg';
-  static const String snack3 = 'assets/Snack3.jpg';
-}
+const List<String> MealImages = [
+  'assets/Breakfast.jpg',
+  'assets/Lunch.jpg',
+  'assets/Dinner.jpg',
+  'assets/Snack1.jpg',
+  'assets/Snack2.jpg',
+  'assets/Snack3.jpg'
+];

@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:water_calculator_app/model/FoodData.dart';
 import 'package:water_calculator_app/model/WaterData.dart';
 
+import 'Enum.dart';
+
 class DataManager extends ChangeNotifier{
   double waterNeeded = 0;
   double foodWater = 0;
@@ -21,5 +23,16 @@ class DataManager extends ChangeNotifier{
         + (data.breastFeeding? 1: 0) * (data.weight * 0.01 + data.physicalActivity * 0.3)
         + (data.ill? 1 : 0) * 0.9;
     //notifyListeners();
+  }
+
+  void calculateFood(){
+    foodWater = 0;
+
+    for (var meal in food.meals){
+      for (var dish in meal.dishes){
+        if (dish.name != Dishes.none) foodWater +=dish.amount;
+      }
+    }
+    notifyListeners();
   }
 }

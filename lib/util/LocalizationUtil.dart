@@ -42,7 +42,7 @@ class Lang {
       'breakfast': 'Breakfast',
       'lunch': 'Lunch',
       'dinner': 'Dinner',
-      'snack': 'snack',
+      'snack': 'Snack',
 
       'addItem': 'None',
       'vegetables': 'Vegetables / salad',
@@ -55,6 +55,8 @@ class Lang {
       'baking': 'Baking',
       'cake': 'Cake',
       'sandwich': 'Sandwich',
+
+      'g': 'g',
     },
     'ru': {
       'title': 'Привет мир!',
@@ -99,7 +101,9 @@ class Lang {
       'drink': 'Напиток',
       'baking': 'Выпечка',
       'cake': 'Пирожное',
-      'sandwich': 'Бутерброд'
+      'sandwich': 'Бутерброд',
+
+      'g': 'г',
     },
   };
 
@@ -185,6 +189,9 @@ class Lang {
     return _localizedValues[locale.languageCode]['cake'];}
   String get sandwich {
     return _localizedValues[locale.languageCode]['sandwich'];}
+
+  String get g {
+    return _localizedValues[locale.languageCode]['g'];}
 
 
 
