@@ -169,18 +169,17 @@ class _DropDishesState extends State<DropDishes> {
                 DropdownMenuItem(value: Dishes.sandwich, child: Text(Lang.of(context).sandwich),),
               ]
           ),
-          SizedBox(width: 20,),
+          SizedBox(width: 10,),
           GestureDetector(child: Text(" - ", style: Styles.TextMainNum,),
             onTap: (){setState(() {
-
-              if (data.food.meals[widget.mealType].dishes[widget.dishNumber].amount >= 0) {
+              if (data.food.meals[widget.mealType].dishes[widget.dishNumber].amount > 0) {
                 data.food.meals[widget.mealType].dishes[widget.dishNumber].amount -= 100;
                 data.calculateFood();
               }
             });},),
           Text('${data.food.meals[widget.mealType].dishes[widget.dishNumber].amount} '
               '${Lang.of(context).g}', style: Styles.TextMain,),
-          GestureDetector(child: Text(" + ", style: Styles.TextMainNum,),
+          GestureDetector(child: Text(" +", style: Styles.TextMainNum,),
             onTap: (){setState(() {
               data.food.meals[widget.mealType].dishes[widget.dishNumber].amount += 100;
               data.calculateFood();
