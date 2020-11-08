@@ -8,6 +8,15 @@ class Meals{
   static const int snack3 = 5;
 }
 
+const List<String> MealImages = [
+  'assets/Breakfast.jpg',
+  'assets/Lunch.jpg',
+  'assets/Dinner.jpg',
+  'assets/Snack1.jpg',
+  'assets/Snack2.jpg',
+  'assets/Snack3.jpg'
+];
+
 class Dishes{
   static const int none = 0;
   static const int vegetables = 1;
@@ -22,11 +31,18 @@ class Dishes{
   static const int sandwich = 109;
 }
 
-const List<String> MealImages = [
-  'assets/Breakfast.jpg',
-  'assets/Lunch.jpg',
-  'assets/Dinner.jpg',
-  'assets/Snack1.jpg',
-  'assets/Snack2.jpg',
-  'assets/Snack3.jpg'
+const List<double> WaterContents = [
+  0,
+  0.95,
+  0.85,
+  0.92,
+  0.6,
+  0.7,
+  0.35,
+  0.98,
+  0.35,
+  0.2,
+  0.5
 ];
+
+

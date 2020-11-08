@@ -30,7 +30,8 @@ class DataManager extends ChangeNotifier{
 
     for (var meal in food.meals){
       for (var dish in meal.dishes){
-        if (dish.name != Dishes.none) foodWater +=dish.amount;
+        if (dish.name != Dishes.none)
+          foodWater += (dish.amount * WaterContents[dish.name]);
       }
     }
     notifyListeners();

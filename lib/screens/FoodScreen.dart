@@ -29,7 +29,8 @@ class CaptionFood extends StatelessWidget {
         child: MyCard(Padding(padding: EdgeInsets.only(left: 32, right: 32, top: 8, bottom: 8),
           child: Consumer<DataManager>(builder: (context, data, child) =>
               Text('${Lang.of(context).waterInFood} \n'
-                  '${data.foodWater * 0.001} ${Lang.of(context).litersWater}',
+                  '${(data.foodWater * 0.001).toStringAsFixed(1)} '
+                  '${Lang.of(context).litersWater}',
                 textAlign: TextAlign.center, style: Styles.TextMain,),)
         )),
       ),
