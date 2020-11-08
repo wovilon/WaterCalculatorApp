@@ -19,6 +19,4 @@ class WaterData{
     }
     return _instance;
   }
-
-
 }

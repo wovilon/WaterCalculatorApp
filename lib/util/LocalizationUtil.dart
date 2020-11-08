@@ -37,7 +37,24 @@ class Lang {
       'ill': 'Are you ill now?',
 
       'waterInFood': 'Your daily food contains:',
-      'litersWater': 'liters of water'
+      'litersWater': 'liters of water',
+
+      'breakfast': 'Breakfast',
+      'lunch': 'Lunch',
+      'dinner': 'Dinner',
+      'snack': 'snack',
+
+      'addItem': 'None',
+      'vegetables': 'Vegetables / salad',
+      'fruits': 'Fruits',
+      'soup': 'Soup',
+      'meat': 'Meat',
+      'porridgePotato': 'Porridge / potato',
+      'bread': 'Bread',
+      'drink': 'Drink',
+      'baking': 'Baking',
+      'cake': 'Cake',
+      'sandwich': 'Sandwich',
     },
     'ru': {
       'title': 'Привет мир!',
@@ -63,8 +80,26 @@ class Lang {
       'pregnancy': 'Беременность?',
       'breast_feeding': 'Грудное вскармливание?',
       'ill': 'Вы болеете сейчас?',
+
       'waterInFood': 'В вашей пище содержится:',
-      'litersWater': 'литров воды'
+      'litersWater': 'литров воды',
+
+      'breakfast': 'Завтрак',
+      'lunch': 'Обед',
+      'dinner': 'Ужин',
+      'snack': 'Перекус',
+
+      'addItem': 'Ничего',
+      'vegetables': 'Овощи / салат',
+      'fruits': 'Фрукты',
+      'soup': 'Суп',
+      'meat': 'Мясо',
+      'porridgePotato': 'Каша / картошка',
+      'bread': 'Хлеб',
+      'drink': 'Напиток',
+      'baking': 'Выпечка',
+      'cake': 'Пирожное',
+      'sandwich': 'Бутерброд'
     },
   };
 
@@ -118,5 +153,40 @@ class Lang {
     return _localizedValues[locale.languageCode]['waterInFood'];}
   String get litersWater {
     return _localizedValues[locale.languageCode]['litersWater'];}
+
+  String get breakfast {
+    return _localizedValues[locale.languageCode]['breakfast'];}
+  String get lunch {
+    return _localizedValues[locale.languageCode]['lunch'];}
+  String get dinner {
+    return _localizedValues[locale.languageCode]['dinner'];}
+  String get snack {
+    return _localizedValues[locale.languageCode]['snack'];}
+
+  String get addItem {
+    return _localizedValues[locale.languageCode]['addItem'];}
+  String get vegetables {
+    return _localizedValues[locale.languageCode]['vegetables'];}
+  String get fruits {
+    return _localizedValues[locale.languageCode]['fruits'];}
+  String get soup {
+    return _localizedValues[locale.languageCode]['soup'];}
+  String get meat {
+    return _localizedValues[locale.languageCode]['meat'];}
+  String get porridgePotato {
+    return _localizedValues[locale.languageCode]['porridgePotato'];}
+  String get bread {
+    return _localizedValues[locale.languageCode]['bread'];}
+  String get drink {
+    return _localizedValues[locale.languageCode]['drink'];}
+  String get baking {
+    return _localizedValues[locale.languageCode]['baking'];}
+  String get cake {
+    return _localizedValues[locale.languageCode]['cake'];}
+  String get sandwich {
+    return _localizedValues[locale.languageCode]['sandwich'];}
+
+
+
 }
 

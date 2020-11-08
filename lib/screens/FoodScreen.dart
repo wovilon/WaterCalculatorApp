@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:water_calculator_app/model/Enum.dart';
 import 'package:water_calculator_app/res/Styles.dart';
 import 'package:water_calculator_app/util/LocalizationUtil.dart';
 import 'package:water_calculator_app/widgets/Background.dart';
@@ -75,6 +76,10 @@ class _FoodSectionState extends State<FoodSection> {
 }
 
 class Section extends StatelessWidget {
+  final mealType;
+
+  Section(this.mealType);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -118,6 +123,7 @@ class DropDishes extends StatefulWidget {
 
 class _DropDishesState extends State<DropDishes> {
   int item = 0;
+
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -126,10 +132,17 @@ class _DropDishesState extends State<DropDishes> {
             item = value;
           });},
           items: [
-            DropdownMenuItem(value: 0, child: Text("First dish"),),
-            DropdownMenuItem(value: 1, child: Text("Second dish"),),
-            DropdownMenuItem(value: 2, child: Text("Cake dish"),),
-            DropdownMenuItem(value: 3, child: Text("Drick dish"),),
+            DropdownMenuItem(value: Dishes.none, child: Text(Lang.of(context).addItem),),
+            DropdownMenuItem(value: Dishes.vegetables, child: Text(Lang.of(context).vegetables),),
+            DropdownMenuItem(value: Dishes.fruits, child: Text(Lang.of(context).fruits),),
+            DropdownMenuItem(value: Dishes.soup, child: Text(Lang.of(context).soup),),
+            DropdownMenuItem(value: Dishes.meat, child: Text(Lang.of(context).meat),),
+            DropdownMenuItem(value: Dishes.porridgePotato, child: Text(Lang.of(context).porridgePotato),),
+            DropdownMenuItem(value: Dishes.bread, child: Text(Lang.of(context).bread),),
+            DropdownMenuItem(value: Dishes.drink, child: Text(Lang.of(context).drink),),
+            DropdownMenuItem(value: Dishes.baking, child: Text(Lang.of(context).baking),),
+            DropdownMenuItem(value: Dishes.cake, child: Text(Lang.of(context).cake),),
+            DropdownMenuItem(value: Dishes.sandwich, child: Text(Lang.of(context).sandwich),),
           ]
       ),
       SizedBox(width: 20,),

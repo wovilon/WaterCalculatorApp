@@ -1,11 +1,13 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:water_calculator_app/model/FoodData.dart';
 import 'package:water_calculator_app/model/WaterData.dart';
 
 class DataManager extends ChangeNotifier{
   double waterNeeded = 0;
   double foodWater = 0;
 
+  Food food = Food.getInstance;
 
 
   void calculateWater(){
