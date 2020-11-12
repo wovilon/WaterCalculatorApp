@@ -60,27 +60,53 @@ class MenuButton extends StatefulWidget{
   }
 }
 
-class MenuButtonState extends State<MenuButton>{
+class MenuButtonState extends State<MenuButton> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<Offset> offset;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =  AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    offset = Tween<Offset>(begin: Offset(0.0, 5.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+
+  }
 
   @override
   Widget build(BuildContext context) {
+    setAnimationTiming(widget.route);
     return GestureDetector(
       onTap: (){Navigator.pushNamed(context, widget.route);},
-      child: Container(
-        margin: EdgeInsets.all(6),
-        width: (widget.width != 0) ? widget.width : double.infinity,
-        height: widget.height,
-        child: MyCard(
-            Center(
-              child: Container(padding: EdgeInsets.all(32),
-                  child: Text(widget.text,
-                    style: Styles.TextMain,
-                    textAlign: TextAlign.center,)
-              ),
-            )
-        )
+      child: SlideTransition(
+        position: offset,
+        child: Container(
+          margin: EdgeInsets.all(6),
+          width: (widget.width != 0) ? widget.width : double.infinity,
+          height: widget.height,
+          child: MyCard(
+              Center(
+                child: Container(padding: EdgeInsets.all(32),
+                    child: Text(widget.text,
+                      style: Styles.TextMain,
+                      textAlign: TextAlign.center,)
+                ),
+              )
+          )
+        ),
       ),
     );
+  }
+
+  Future<void> setAnimationTiming(String route)async{
+    int timing = 0;
+    if (route == Routes.waterScreen) timing = 0;
+    else if (route == Routes.foodScreen) timing = 300;
+    else if (route == Routes.balanceScreen) timing = 600;
+    else timing = 0;
+
+    await Future.delayed(Duration(milliseconds: timing));
+    controller.forward();
   }
 }
 
