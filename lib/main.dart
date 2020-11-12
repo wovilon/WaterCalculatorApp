@@ -33,6 +33,16 @@ class DemoApp extends StatelessWidget {
   }
 }
 
+PageRouteBuilder _getPageRouteBuilder(Widget screen()){
+  return PageRouteBuilder(
+    transitionDuration: Duration(seconds: 0),
+    pageBuilder: (_, __, ___) => screen(),
+    transitionsBuilder: (_, anim, __, child) {
+      return FadeTransition(opacity: anim, child: child);
+    },
+  );
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,12 +62,18 @@ class MyApp extends StatelessWidget {
         const Locale('ru', ''),
       ],
 
-      routes: {
-        Routes.mainScreen:(BuildContext context) => MainScreen(),
-        Routes.waterScreen:(BuildContext context) => WaterScreen(),
-        Routes.foodScreen:(BuildContext context) => FoodScreen(),
-        Routes.balanceScreen:(BuildContext context) => BalanceScreen()
+      onGenerateRoute: (settings) {
+        if (settings.name == Routes.mainScreen) {
+          return _getPageRouteBuilder(() => MainScreen());
+        } else if (settings.name == Routes.waterScreen) {
+          return _getPageRouteBuilder(() => WaterScreen());
+        }else if (settings.name == Routes.foodScreen) {
+          return _getPageRouteBuilder(() => FoodScreen());
+        }
+        // unknown route
+        return _getPageRouteBuilder(() => MainScreen());
       },
+
       home: MainScreen()
     );
   }
