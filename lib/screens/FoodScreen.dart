@@ -21,18 +21,38 @@ class FoodScreen extends StatelessWidget {
   }
 }
 
-class CaptionFood extends StatelessWidget {
+class CaptionFood extends StatefulWidget {
+  @override
+  _CaptionFoodState createState() => _CaptionFoodState();
+}
+
+class _CaptionFoodState extends State<CaptionFood> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<Offset> offset;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =  AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    offset = Tween<Offset>(begin: Offset(0.0, -3.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.only(top: 70),
-      child: Center(
-        child: MyCard(Padding(padding: EdgeInsets.only(left: 32, right: 32, top: 8, bottom: 8),
-          child: Consumer<DataManager>(builder: (context, data, child) =>
-              Text('${Lang.of(context).waterInFood} \n'
-                  '${(data.foodWater * 0.001).toStringAsFixed(1)} '
-                  '${Lang.of(context).litersWater}',
-                textAlign: TextAlign.center, style: Styles.TextMain,),)
-        )),
+    controller.forward();
+    return SlideTransition(
+      position: offset,
+      child: Padding(padding: EdgeInsets.only(top: 70),
+        child: Center(
+          child: MyCard(Padding(padding: EdgeInsets.only(left: 32, right: 32, top: 8, bottom: 8),
+            child: Consumer<DataManager>(builder: (context, data, child) =>
+                Text('${Lang.of(context).waterInFood} \n'
+                    '${(data.foodWater * 0.001).toStringAsFixed(1)} '
+                    '${Lang.of(context).litersWater}',
+                  textAlign: TextAlign.center, style: Styles.TextMain,),)
+          )),
+        ),
       ),
     );
   }
@@ -80,54 +100,88 @@ class _FoodSectionState extends State<FoodSection> {
   }
 }
 
-class Section extends StatelessWidget {
+class Section extends StatefulWidget {
   final int mealType;
-
   Section(this.mealType);
 
+  @override
+  _SectionState createState() => _SectionState();
+}
+
+
+class _SectionState extends State<Section> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<Offset> offset;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =  AnimationController(vsync: this, duration: Duration(milliseconds: 800));
+    offset = Tween<Offset>(begin: Offset(0.0, 5.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+
+  }
+
+
   String getMealRes(BuildContext context){
-    if (mealType == Meals.breakfast) return Lang.of(context).breakfast;
-    else if (mealType == Meals.lunch) return Lang.of(context).lunch;
-    else if (mealType == Meals.dinner) return Lang.of(context).dinner;
-    else if (mealType == Meals.snack1) return Lang.of(context).snack;
-    else if (mealType == Meals.snack2) return Lang.of(context).snack;
+    if (widget.mealType == Meals.breakfast) return Lang.of(context).breakfast;
+    else if (widget.mealType == Meals.lunch) return Lang.of(context).lunch;
+    else if (widget.mealType == Meals.dinner) return Lang.of(context).dinner;
+    else if (widget.mealType == Meals.snack1) return Lang.of(context).snack;
+    else if (widget.mealType == Meals.snack2) return Lang.of(context).snack;
     else return Lang.of(context).snack;
   }
 
   @override
   Widget build(BuildContext context) {
+    setAnimationTiming(widget.mealType);
+    return SlideTransition(
+      position: offset,
+      child: Container(
+        child: MyCard(Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Stack(alignment: Alignment.bottomCenter, children: [
+          ClipRRect(borderRadius:
+          BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              child: Image.asset(MealImages[widget.mealType])),
+          Align(alignment: Alignment.bottomCenter, child:
+            Container(width: double.infinity,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(color: Colors.white54,
+                    border: Border(top: BorderSide(color: Colors.grey, width: 2
+                ))),
+                child: Text(getMealRes(context), style: Styles.TextMain,)
+                ,)
+            )
+        ],
+        ),
+        Padding(padding: EdgeInsets.only(left: 16),
+          child: Column(children: [
+            DropDishes(widget.mealType, 0),
+            DropDishes(widget.mealType, 1),
+            DropDishes(widget.mealType, 2),
+            DropDishes(widget.mealType, 3),
+            DropDishes(widget.mealType, 4),
+            SizedBox(height: 8,)
 
-    return Container(
-      child: MyCard(Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Stack(alignment: Alignment.bottomCenter, children: [
-        ClipRRect(borderRadius:
-        BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            child: Image.asset(MealImages[mealType])),
-        Align(alignment: Alignment.bottomCenter, child:
-          Container(width: double.infinity,
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(color: Colors.white54,
-                  border: Border(top: BorderSide(color: Colors.grey, width: 2
-              ))),
-              child: Text(getMealRes(context), style: Styles.TextMain,)
-              ,)
-          )
+          ],),
+        )
       ],
+      )),
       ),
-      Padding(padding: EdgeInsets.only(left: 16),
-        child: Column(children: [
-          DropDishes(mealType, 0),
-          DropDishes(mealType, 1),
-          DropDishes(mealType, 2),
-          DropDishes(mealType, 3),
-          DropDishes(mealType, 4),
-          SizedBox(height: 8,)
-
-        ],),
-      )
-    ],
-    )),
     );
+  }
+
+  Future<void> setAnimationTiming(int mealType)async{
+    int timing = 0;
+    if (mealType == Meals.breakfast) timing = 0;
+    else if (mealType == Meals.lunch) timing = 600;
+    else if (mealType == Meals.dinner) timing = 800;
+    else if (mealType == Meals.snack1) timing = 0;
+    else if (mealType == Meals.snack2) timing = 600;
+    else if (mealType == Meals.snack3) timing = 800;
+
+    await Future.delayed(Duration(milliseconds: timing));
+    controller.forward();
   }
 }
 

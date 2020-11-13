@@ -12,7 +12,7 @@ class Lang {
 
   static Map<String, Map<String, String>> _localizedValues = {
     'en': {
-      'title': 'Hello World',
+      'title': 'Water calculator',
       'waterCalculator' : 'WATER CALCULATOR',
       'foodCalculator' : 'FOOD CALCULATOR',
       'yourBalance' : 'YOUR WATER BALANCE',
@@ -59,7 +59,7 @@ class Lang {
       'g': 'g',
     },
     'ru': {
-      'title': 'Привет мир!',
+      'title': 'Калькулятор потребления воды',
       'waterCalculator' : 'КАЛЬКУЛЯТОР ПОТРЕБНОСТИ В ВОДЕ',
       'foodCalculator' : 'КАЛЬКУЛЯТОР ВОДЫ В ПИЩЕ',
       'yourBalance' : 'ВАШ ВОДНЫЙ БАЛАНС',

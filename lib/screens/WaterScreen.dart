@@ -29,8 +29,19 @@ class _WaterList extends StatefulWidget {
   __WaterListState createState() => __WaterListState();
 }
 
-class __WaterListState extends State<_WaterList> {
+class __WaterListState extends State<_WaterList> with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<Offset> offset;
   DataManager data;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =  AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    offset = Tween<Offset>(begin: Offset(0.0, 5.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+
+  }
 
   double calculateWidth(){
     if (MediaQuery.of(context).size.width > 600)
@@ -54,71 +65,75 @@ class __WaterListState extends State<_WaterList> {
   Widget build(BuildContext context) {
     if(data == null) data = context.watch<DataManager>();
     data.calculateWater();
-
-    return  Align(alignment: Alignment.topCenter,
-        child: Padding(padding: EdgeInsets.only(top: 120, bottom: 32, left: 8, right: 8),
-          child: Container(width: calculateWidth(),
-            child: MyCard(
-              Padding(padding: const EdgeInsets.only(top: 24, left: 16, right: 16, bottom: 8),
-                child: Column(children: [
-                  Text('${Lang.of(context).dailyWater}'
-                      ' ${data.waterNeeded.toStringAsFixed(1)}'
-                      ' ${Lang.of(context).l}',
-                    style: Styles.TextMain, textAlign: TextAlign.center,),
-                  SizedBox(height: 8,),
-                  Expanded(
-                    child: Container(
-                      child: ListView(padding: EdgeInsets.only(top: 8),
-                        children: [
-                        _Item(Lang.of(context).gender, onSwitch: setGender,
-                          isSwitched: widget.waterData.genderMale,
-                          yesText: Lang.of(context).male,
-                          noText: Lang.of(context).female,),
-                        _Item(Lang.of(context).weight, onSlide: setWeight,
-                          sliderValue: widget.waterData.weight,
-                          sliderUnits: Lang.of(context).kg,
-                            sliderMax: 140, sliderMin: 20, sliderInterval: 20,
-                            subIntervalEnabled: true,),
-                        SizedBox(height: 20,),
-                        _Item(Lang.of(context).physical_activity, onSlide: setPhys,
-                          sliderValue: widget.waterData.physicalActivity,
-                          sliderUnits: Lang.of(context).h,
-                          sliderMax: 6, sliderMin: 0, sliderInterval: 1,),
+    controller.forward();
+    return SlideTransition(
+      position: offset,
+      child: Align(alignment: Alignment.topCenter,
+          child: Padding(padding: EdgeInsets.only(top: 120, bottom: 32, left: 8, right: 8),
+            child: Container(width: calculateWidth(),
+              child: MyCard(
+                Padding(padding: const EdgeInsets.only(top: 24, left: 16, right: 16, bottom: 8),
+                  child: Column(children: [
+                    Text('${Lang.of(context).dailyWater}'
+                        ' ${data.waterNeeded.toStringAsFixed(1)}'
+                        ', ${Lang.of(context).l}'
+                        ' ',
+                      style: Styles.TextMain, textAlign: TextAlign.center,),
+                    SizedBox(height: 8,),
+                    Expanded(
+                      child: Container(
+                        child: ListView(padding: EdgeInsets.only(top: 8),
+                          children: [
+                          _Item(Lang.of(context).gender, onSwitch: setGender,
+                            isSwitched: widget.waterData.genderMale,
+                            yesText: Lang.of(context).female,
+                            noText: Lang.of(context).male,),
+                          _Item(Lang.of(context).weight, onSlide: setWeight,
+                            sliderValue: widget.waterData.weight,
+                            sliderUnits: Lang.of(context).kg,
+                              sliderMax: 140, sliderMin: 20, sliderInterval: 20,
+                              subIntervalEnabled: true,),
                           SizedBox(height: 20,),
-                          _Item(Lang.of(context).coffee, onSlide: setCoffee,
-                            sliderValue: widget.waterData.coffee,
-                            sliderUnits: Lang.of(context).cups,
-                            sliderMax: 5, sliderMin: 0, sliderInterval: 1,),
-                          SizedBox(height: 20,),
-                          _Item(Lang.of(context).sun, onSwitch: setSun,
-                              isSwitched: widget.waterData.sunnyClimate,
-                              yesText: Lang.of(context).yes,
-                            noText: Lang.of(context).no),
-                          _Item(Lang.of(context).protein_diet, onSwitch: setProtein,
-                              isSwitched: widget.waterData.proteinDiet,
-                              yesText: Lang.of(context).yes,
+                          _Item(Lang.of(context).physical_activity, onSlide: setPhys,
+                            sliderValue: widget.waterData.physicalActivity,
+                            sliderUnits: Lang.of(context).h,
+                            sliderMax: 6, sliderMin: 0, sliderInterval: 1,),
+                            SizedBox(height: 20,),
+                            _Item(Lang.of(context).coffee, onSlide: setCoffee,
+                              sliderValue: widget.waterData.coffee,
+                              sliderUnits: Lang.of(context).cups,
+                              sliderMax: 5, sliderMin: 0, sliderInterval: 1,),
+                            SizedBox(height: 20,),
+                            _Item(Lang.of(context).sun, onSwitch: setSun,
+                                isSwitched: widget.waterData.sunnyClimate,
+                                yesText: Lang.of(context).yes,
                               noText: Lang.of(context).no),
-                          _Item(Lang.of(context).pregnancy, onSwitch: setPregnancy,
-                              isSwitched: widget.waterData.pregnancy,
-                              yesText: Lang.of(context).yes,
-                              noText: Lang.of(context).no),
-                          _Item(Lang.of(context).breast_feeding, onSwitch: setBreastFeed,
-                              isSwitched: widget.waterData.breastFeeding,
-                              yesText: Lang.of(context).yes,
-                              noText: Lang.of(context).no),
-                          _Item(Lang.of(context).ill, onSwitch: setIll,
-                              isSwitched: widget.waterData.ill,
-                              yesText: Lang.of(context).yes,
-                              noText: Lang.of(context).no),
-                      ],),
-                    ),
-                  )
-                ],),
+                            _Item(Lang.of(context).protein_diet, onSwitch: setProtein,
+                                isSwitched: widget.waterData.proteinDiet,
+                                yesText: Lang.of(context).yes,
+                                noText: Lang.of(context).no),
+                            _Item(Lang.of(context).pregnancy, onSwitch: setPregnancy,
+                                isSwitched: widget.waterData.pregnancy,
+                                yesText: Lang.of(context).yes,
+                                noText: Lang.of(context).no),
+                            _Item(Lang.of(context).breast_feeding, onSwitch: setBreastFeed,
+                                isSwitched: widget.waterData.breastFeeding,
+                                yesText: Lang.of(context).yes,
+                                noText: Lang.of(context).no),
+                            _Item(Lang.of(context).ill, onSwitch: setIll,
+                                isSwitched: widget.waterData.ill,
+                                yesText: Lang.of(context).yes,
+                                noText: Lang.of(context).no),
+                        ],),
+                      ),
+                    )
+                  ],),
+                ),
               ),
+            )
             ),
-          )
           ),
-        );
+    );
   }
 }
 
