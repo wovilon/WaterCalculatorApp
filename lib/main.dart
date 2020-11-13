@@ -69,6 +69,8 @@ class MyApp extends StatelessWidget {
           return _getPageRouteBuilder(() => WaterScreen());
         }else if (settings.name == Routes.foodScreen) {
           return _getPageRouteBuilder(() => FoodScreen());
+        }else if (settings.name == Routes.balanceScreen) {
+          return _getPageRouteBuilder(() => BalanceScreen());
         }
         // unknown route
         return _getPageRouteBuilder(() => MainScreen());
@@ -81,7 +83,7 @@ class MyApp extends StatelessWidget {
 
 void main() => runApp(
   DevicePreview(
-    enabled: !kReleaseMode,   //!kReleaseMode,
+    enabled: false,   //!kReleaseMode,
     builder: (context) =>
         ChangeNotifierProvider(
             create: (context) => DataManager(),

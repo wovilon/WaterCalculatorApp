@@ -6,8 +6,8 @@ import 'package:water_calculator_app/model/WaterData.dart';
 import 'Enum.dart';
 
 class DataManager extends ChangeNotifier{
-  double waterNeeded = 0;
-  double foodWater = 0;
+  double waterNeeded = 0; // liters
+  double foodWater = 0;   // ml or g
 
   Food food = Food.getInstance;
 

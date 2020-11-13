@@ -55,8 +55,15 @@ class Lang {
       'baking': 'Baking',
       'cake': 'Cake',
       'sandwich': 'Sandwich',
-
       'g': 'g',
+
+      'please_fill': 'Please, fill:',
+      'you_drink': 'You drink',
+      'on': '',
+      'ideal_amount': 'ideal amount of water',
+      'more_than_need': 'more water, than you need.',
+      'less_than_need': 'less water, than you need.',
+      'and': 'and',
     },
     'ru': {
       'title': 'Калькулятор потребления воды',
@@ -102,8 +109,15 @@ class Lang {
       'baking': 'Выпечка',
       'cake': 'Пирожное',
       'sandwich': 'Бутерброд',
-
       'g': 'г',
+
+      'please_fill': 'Пожалуйста, заполните:',
+      'you_drink': 'Вы пьете',
+      'on': 'на',
+      'ideal_amount': 'идеальное количество воды.',
+      'more_than_need': 'больше воды, чем нужно.',
+      'less_than_need': 'меньше воды, чем нужно.',
+      'and': 'и',
     },
   };
 
@@ -189,11 +203,23 @@ class Lang {
     return _localizedValues[locale.languageCode]['cake'];}
   String get sandwich {
     return _localizedValues[locale.languageCode]['sandwich'];}
-
   String get g {
     return _localizedValues[locale.languageCode]['g'];}
 
-
+  String get pleaseFill {
+    return _localizedValues[locale.languageCode]['please_fill'];}
+  String get youDrink {
+    return _localizedValues[locale.languageCode]['you_drink'];}
+  String get idealAmount {
+    return _localizedValues[locale.languageCode]['ideal_amount'];}
+  String get moreThanNeed {
+    return _localizedValues[locale.languageCode]['more_than_need'];}
+  String get lessThanNeed {
+    return _localizedValues[locale.languageCode]['less_than_need'];}
+  String get and {
+    return _localizedValues[locale.languageCode]['and'];}
+  String get on {
+    return _localizedValues[locale.languageCode]['on'];}
 
 }
 
