@@ -80,11 +80,10 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
     );
     else {
       double diff = data.foodWater * 0.001 - data.waterNeeded;
-      return Column(children: [
+      return Column(mainAxisSize: MainAxisSize.min, children: [
         Text('${Lang.of(context).dailyWater}'
             '\n${data.waterNeeded.toStringAsFixed(1)}'
-            ', ${Lang.of(context).l}'
-            ' ',
+            ', ${Lang.of(context).l}',
           style: Styles.TextMain, textAlign: TextAlign.center,),
 
         SizedBox(height: 20,),
@@ -96,14 +95,16 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
 
         SizedBox(height: 20,),
 
-        Text('${Lang.of(context).youDrink} '
-            '${(diff > 0.2 || diff < -0.2)? Lang.of(context).on :''} '
-            '${diff.abs().toStringAsFixed(1)} ${Lang.of(context).l} '
-            '${(diff <= 0.2 && diff >= -0.2)? Lang.of(context).idealAmount : ''}'
-            '${(diff > 0.2 )? Lang.of(context).moreThanNeed : ''}'
-            '${(diff < -0.2 )? Lang.of(context).lessThanNeed : ''}',
-          style: Styles.TextMain, textAlign: TextAlign.center,
-        )
+        RichText(textAlign: TextAlign.center, text: TextSpan(style: Styles.TextMain, children: [
+          TextSpan(text: '${Lang.of(context).youDrink} '),
+          TextSpan(text: '${(diff > 0.2 || diff < -0.2)? Lang.of(context).on :''} '),
+          TextSpan(style: TextStyle(fontSize: 28, color: (diff > 0)? Colors.green : Colors.red),
+              text: '${(diff > 0.2 || diff < -0.2)? '${diff.abs().toStringAsFixed(1)} ${Lang.of(context).l} ':''}'
+              ),
+          TextSpan(text: '${(diff <= 0.2 && diff >= -0.2)? Lang.of(context).idealAmount : ''}'),
+          TextSpan(text: '${(diff > 0.2 )? Lang.of(context).moreThanNeed : ''}'),
+          TextSpan(text: '${(diff < -0.2 )? Lang.of(context).lessThanNeed : ''}'),
+        ]),)
       ],);
     }
   }

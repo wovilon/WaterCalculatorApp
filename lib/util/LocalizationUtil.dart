@@ -60,7 +60,7 @@ class Lang {
       'please_fill': 'Please, fill:',
       'you_drink': 'You drink',
       'on': '',
-      'ideal_amount': 'ideal amount of water',
+      'ideal_amount': 'ideal amount of water.',
       'more_than_need': 'more water, than you need.',
       'less_than_need': 'less water, than you need.',
       'and': 'and',
