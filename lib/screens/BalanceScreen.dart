@@ -51,15 +51,17 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Padding(padding: EdgeInsets.only(top: 120, bottom: 32, left: 8, right: 8),
-      child: Container(width: calculateWidth(),
-      child: MyCard(
-          Padding(padding: EdgeInsets.only(top: 24, bottom: 16, left: 16, right: 24),
-            child: Center(
-              child: Consumer<DataManager>(builder: (context, data, child) =>
-                  chooseView(data, context),),
-            ),
-          ))
-        ),
+      child: Center(
+        child: Container(width: calculateWidth(),
+        child: MyCard(
+            Padding(padding: EdgeInsets.only(top: 24, bottom: 16, left: 16, right: 24),
+              child: Center(
+                child: Consumer<DataManager>(builder: (context, data, child) =>
+                    chooseView(data, context),),
+              ),
+            ))
+          ),
+      ),
     );
   }
 //Consumer<DataManager>(builder: (context, data, child) => chooseView()
