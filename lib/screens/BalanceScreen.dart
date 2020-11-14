@@ -83,10 +83,12 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
     else {
       double diff = data.foodWater * 0.001 - data.waterNeeded;
       return Column(mainAxisSize: MainAxisSize.min, children: [
+        Container(width: double.infinity, child:
         Text('${Lang.of(context).dailyWater}'
             '\n${data.waterNeeded.toStringAsFixed(1)}'
             ', ${Lang.of(context).l}',
           style: Styles.TextMain, textAlign: TextAlign.center,),
+            ),
 
         SizedBox(height: 20,),
 
